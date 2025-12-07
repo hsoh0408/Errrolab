@@ -1,0 +1,183 @@
+/* --- 공통 레이아웃 (두 모드의 요소 위치 일치) --- */
+body {
+    transition: background-color 0.5s, color 0.5s;
+    /* 기본 폰트와 여백 설정 */
+    font-size: 14px;
+    margin: 0;
+    padding-top: 50px;
+    /* 토글 버튼 공간 확보 */
+    min-height: 100vh;
+}
+
+.content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-container.inactive {
+    opacity: 0;
+    pointer-events: none;
+    /* 클릭 방지 */
+}
+
+.content-container.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.website-content {
+    /* 이 컨테이너가 모든 요소를 포함하며, 여기에 그리드나 플렉스 등으로 배치를 결정합니다. */
+    /* 요청에 따라 요소 배치를 일치시키기 위해 'position: relative;'를 사용하고 하위 요소를 절대 위치로 배치할 수 있습니다. */
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 800px;
+    /* 예시 높이. 실제 콘텐츠에 맞게 조절 필요 */
+}
+
+/* 모든 콘텐츠 요소들의 공통 배치 (중요!) */
+.content-item {
+    position: absolute;
+    /* 이 위치를 두 모드에서 완벽히 일치시켜야 합니다 */
+    padding: 10px;
+}
+
+.logo-area {
+    top: 50px;
+    left: 50px;
+}
+
+.story-area {
+    top: 200px;
+    right: 50px;
+}
+
+.video-area {
+    top: 350px;
+    left: 100px;
+    width: 300px;
+}
+
+.image-gallery {
+    top: 450px;
+    left: 50px;
+    width: 60%;
+}
+
+.social-area {
+    bottom: 50px;
+    right: 50px;
+}
+
+/* --- 토글 버튼 스타일 --- */
+#toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+/* --- ERRRO 모드 (레트로 컴퓨터) 스타일 --- */
+.errro-mode {
+    background-color: #000;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    /* 레트로 폰트 */
+}
+
+.errro-mode a {
+    color: #00FFFF;
+    text-decoration: none;
+    border-bottom: 1px solid #00FFFF;
+}
+
+.errro-mode #mode-toggle {
+    color: #00FF00;
+    border: 2px solid #00FF00;
+}
+
+.errro-mode .logo-area h1 {
+    font-size: 3em;
+    text-shadow: 0 0 5px #00FF00;
+}
+
+.errro-mode .story-button {
+    background-color: #00FF00;
+    color: #000;
+    padding: 5px;
+    border: none;
+}
+
+.errro-mode .image-gallery img {
+    border: 1px dashed #00FF00;
+}
+
+
+/* --- ARRRCHIVE 모드 (아날로그 노트) 스타일 --- */
+.arrrchive-mode {
+    background-color: #fcf8e3;
+    /* 노트 색상 */
+    color: #333;
+    /* 손글씨 느낌 */
+    font-family: 'Georgia', serif;
+    /* 아날로그 폰트 */
+    background-image: linear-gradient(to bottom, transparent 95%, #ddd 95%);
+    /* 줄노트 효과 */
+    background-size: 100% 20px;
+}
+
+.arrrchive-mode a {
+    color: #a00;
+    text-decoration: none;
+    border-bottom: 1px dotted #a00;
+}
+
+.arrrchive-mode #mode-toggle {
+    color: #333;
+    border: 1px solid #333;
+    background: #fff;
+}
+
+.arrrchive-mode .logo-area h1 {
+    font-size: 2.5em;
+    font-style: italic;
+}
+
+.arrrchive-mode .story-button {
+    border: 2px solid #a00;
+    background: #fff;
+    padding: 5px;
+}
+
+.arrrchive-mode .image-gallery img {
+    border: 5px double #a00;
+}
+
+.arrrchive-mode .image-text {
+    font-family: 'Handwritten', cursive;
+    /* 손글씨 폰트가 필요합니다 */
+}
+
+/* 현재 모드 텍스트 강조 */
+#mode-toggle .mode-text {
+    opacity: 0.5;
+}
+
+#mode-toggle .current-mode {
+    opacity: 1;
+    text-decoration: underline;
+}
