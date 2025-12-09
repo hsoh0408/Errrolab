@@ -202,6 +202,12 @@ main#content-area {
     /* 활성화 시 높이 확보 */
 }
 
+.sub-page {
+    min-height: 100vh;
+    width: 100%;
+    padding: 50px 5%;
+    transition: opacity 0.3s;
+}
 
 /* ======================================= */
 /* --- 6. HOME 페이지 스타일 --- */
@@ -254,6 +260,7 @@ main#content-area {
 .facility-card {
     width: 150px;
     height: 200px;
+    cursor: pointer;
 }
 
 .facility-card img {
@@ -589,4 +596,73 @@ main#content-area {
 .popup-inactive {
     display: none;
     opacity: 0;
+}
+
+
+
+/* --- 12. 세부 페이지 레이아웃 및 버튼 스타일 (새로 추가) --- */
+
+.back-button {
+    background: none;
+    border: 1px solid;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: block;
+    /* 줄바꿈 */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ERRRO 모드 버튼 스타일 */
+.errro-mode .back-button {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+}
+
+.errro-mode .back-button:hover {
+    background-color: var(--neon-pink);
+    color: var(--main-bg);
+}
+
+/* ARRRCHIVE 모드 버튼 스타일 */
+.arrrchive-mode .back-button {
+    color: #333;
+    border-color: #333;
+}
+
+.arrrchive-mode .back-button:hover {
+    background-color: #333;
+    color: #F0F0F0;
+}
+
+/* 좌우 이미지/텍스트 배치 컨테이너 */
+.sub-page-content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.image-area {
+    flex: 1;
+    max-width: 50%;
+}
+
+.image-area img {
+    width: 100%;
+    height: auto;
+    border: 1px solid;
+}
+
+.text-area {
+    flex: 1;
+    max-width: 50%;
+    /* 텍스트가 왼쪽 정렬되도록 명시 */
+    text-align: left;
+}
+
+.text-area p {
+    font-size: 1.4em;
+    line-height: 1.8;
 }

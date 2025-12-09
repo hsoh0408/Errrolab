@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 로고 링크 요소 (새로 가져옴)
     const logoLinkElement = document.getElementById('home-link');
 
+    // 새 변수 선언: Facilities 세부 페이지 관련 요소
+    const clickableCards = document.querySelectorAll('.clickable-card'); // Facilities 카드
+    const backButtons = document.querySelectorAll('.back-button'); // 뒤로가기 버튼
+
     // --- 1. 페이지 전환 로직 (SPA 스타일) ---
     function setActivePage(targetPageId) {
         pages.forEach(page => {
@@ -42,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.remove('active-nav');
             }
         });
+
+
     }
 
     // 내비게이션 링크 클릭 이벤트 설정
@@ -52,6 +58,33 @@ document.addEventListener('DOMContentLoaded', () => {
             setActivePage(targetPageId);
             window.scrollTo(0, 0);
             window.history.pushState(null, '', `#${targetPageId}`);
+        });
+    });
+
+
+    // --- 4. Facilities 카드 및 뒤로가기 버튼 이벤트 추가 (새로 추가) ---
+
+    // Facilities 카드 클릭 이벤트
+    clickableCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            const targetPageId = card.getAttribute('data-target');
+            if (targetPageId) {
+                setActivePage(targetPageId);
+                window.scrollTo(0, 0);
+                window.history.pushState(null, '', `#${targetPageId}`);
+            }
+        });
+    });
+
+    // 뒤로가기 버튼 클릭 이벤트
+    backButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetPageId = button.getAttribute('data-target'); // facilities
+            if (targetPageId) {
+                setActivePage(targetPageId);
+                window.scrollTo(0, 0);
+                window.history.pushState(null, '', `#${targetPageId}`);
+            }
         });
     });
 

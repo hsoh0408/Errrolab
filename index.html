@@ -72,13 +72,50 @@
             <div class="page-content">
                 <h1 class="title-font">FACILITIES</h1>
                 <div class="card-container">
-                    <div class="facility-card" data-hover-text="CREATE">
+                    <div class="facility-card clickable-card" data-target="sub-create">
                         <img src="facility_create.jpeg" alt="Create Area">
                         <div class="overlay"><span class="main-font">CREATE</span></div>
                     </div>
-                    <div class="facility-card" data-hover-text="EXHIBIT">
+                    <div class="facility-card clickable-card" data-target="sub-exhibit">
                         <img src="facility_exhibit.png" alt="Exhibit Hall">
                         <div class="overlay"><span class="main-font">EXHIBIT</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="sub-create" class="page inactive sub-page">
+            <div class="page-content">
+                <button class="back-button main-font" data-target="facilities">← BACK TO FACILITIES</button>
+                <h2 class="title-font sub-title">Creative Studio</h2>
+                <div class="sub-page-content content-left-image">
+                    <div class="image-area">
+                        <img src="create_studio.jpg" alt="Creative Studio Image">
+                    </div>
+                    <div class="text-area">
+                        <p class="main-font">여기에 본문 텍스트를 입력하세요. (우측 텍스트 영역)</p>
+                        <p class="main-font">The Creative Studio is a space where ideas are materialized through
+                            dedication and
+                            collaboration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sub-exhibit" class="page inactive sub-page">
+            <div class="page-content">
+                <button class="back-button main-font" data-target="facilities">← BACK TO FACILITIES</button>
+                <h2 class="title-font sub-title">Work Exhibition</h2>
+                <div class="sub-page-content content-right-image">
+                    <div class="text-area">
+                        <p class="main-font">여기에 본문 텍스트를 입력하세요. (좌측 텍스트 영역)</p>
+                        <p class="main-font">The Work Exhibition hall serves as a platform to display the artifacts
+                            generated
+                            from the studio's intensive efforts.</p>
+                    </div>
+                    <div class="image-area">
+                        <img src="exhibit_hall.jpg" alt="Work Exhibition Hall Image">
                     </div>
                 </div>
             </div>
