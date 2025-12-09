@@ -48,7 +48,7 @@ body {
     text-decoration: none;
 }
 
-.errro-mode #logo-image {
+.errro-mode #dynamic-logo {
     filter: brightness(1) drop-shadow(0 0 3px var(--neon-blue));
     transition: filter 0.3s;
 }
@@ -79,7 +79,7 @@ body {
     text-decoration: none;
 }
 
-.arrrchive-mode #logo-image {
+.arrrchive-mode #dynamic-logo {
     filter: grayscale(1) brightness(0.5);
     transition: filter 0.3s;
 }
@@ -147,7 +147,7 @@ header {
 }
 
 #dynamic-logo {
-    width: 500px;
+    width: 300px;
     /* 로고 이미지 크기 */
     height: auto;
 }
@@ -241,6 +241,16 @@ main#content-area {
 /* ======================================= */
 /* --- 8. FACILITIES 페이지 스타일 --- */
 /* ======================================= */
+/* ======================================= */
+/* --- 8. FACILITIES 페이지 스타일 --- */
+/* ======================================= */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+
 .facility-card {
     width: 150px;
     height: 200px;
@@ -421,6 +431,63 @@ main#content-area {
     pointer-events: auto;
 }
 
+
+
+/* ======================================= */
+/* --- 10. JOIN US 페이지 스타일 --- */
+/* ======================================= */
+.workshop-section {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.workshop-section label {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+.workshop-section input,
+.workshop-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: none;
+    border: 2px solid;
+    font-size: 1.2em;
+    transition: border-color 0.3s;
+}
+
+.submit-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    background: none;
+    border: 2px solid;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.errro-mode .submit-button {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+}
+
+.errro-mode .submit-button:hover {
+    background-color: var(--neon-pink);
+    color: var(--main-bg);
+}
+
+.arrrchive-mode .submit-button {
+    color: #111;
+    border-color: #111;
+}
+
+.arrrchive-mode .submit-button:hover {
+    background-color: #111;
+    color: #F0F0F0;
+}
 
 /* ======================================= */
 /* --- 11. 글리치 효과 및 팝업 --- */
