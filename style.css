@@ -200,19 +200,55 @@ main {
     height: 180px;
 }
 
-#toggle-container {
+
+/* style.css 파일 확인 */
+
+.content-container {
     position: absolute;
-    bottom: 0;
-    right: 20px;
-    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
 }
 
+/* 비활성화된 컨테이너는 투명하고, 클릭할 수 없게 함 */
+.content-container.inactive {
+    opacity: 0;
+    pointer-events: none;
+    /* 클릭 이벤트 방지 (아래 콘텐츠가 클릭되는 것을 막음) */
+    position: absolute;
+    /* 두 컨테이너가 겹치도록 유지 */
+}
+
+/* 활성화된 컨테이너는 보이게 함 */
+.content-container.active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    /* 활성화될 때만 relative로 변경하여 컨테이너 높이를 인식하게 함 */
+}
+
+/* 1. 위치 수정: fixed로 변경 */
+#toggle-container {
+    position: fixed;
+    /* <<--- 수정됨 */
+    bottom: 30px;
+    /* <<--- 추가/수정됨 */
+    right: 30px;
+    /* <<--- 추가/수정됨 */
+    z-index: 1000;
+}
+
+/* 2. 크기 수정: padding과 font-size 키움 */
 #mode-toggle {
     background: none;
     cursor: pointer;
     font-weight: bold;
     outline: none;
-    padding: 5px 10px;
+    padding: 15px 25px;
+    /* <<--- 수정됨 */
+    font-size: 1.2em;
+    /* <<--- 수정됨 */
     transition: color 0.3s, border-color 0.3s;
     font-family: var(--dot-font);
 }

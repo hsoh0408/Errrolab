@@ -60,40 +60,43 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateToggleText(isErrroMode) {
         const errroText = toggleButton.querySelector('.mode-text:first-child');
         const arrrchiveText = toggleButton.querySelector('.mode-text:last-child');
+        // script.js 파일 수정
 
-        if (isErrroMode) {
-            errroText.classList.add('current-mode');
-            arrrchiveText.classList.remove('current-mode');
-        } else {
-            errroText.classList.remove('current-mode');
-            arrrchiveText.classList.add('current-mode');
-        }
-    }
+        // ... (1. 페이지 전환 로직은 그대로 유지) ...
 
-    // 초기 상태 설정
-    const isErrro = body.classList.contains('errro-mode');
-    updateToggleText(isErrro);
+        // 갤러리 전용 토글 요소
+        const toggleButton = document.getElementById('mode-toggle');
+        const body = document.body;
+        const errroContent = document.getElementById('errro-content');
+        const arrrchiveContent = document.getElementById('arrrchive-content');
 
-    toggleButton.addEventListener('click', () => {
-        // 1. Body 클래스 전환 (전체 테마 변경)
-        const isErrroMode = body.classList.toggle('errro-mode');
-        body.classList.toggle('arrrchive-mode', !isErrroMode);
+        // ... (updateToggleText 함수는 그대로 유지) ...
 
-        // 2. 갤러리 콘텐츠 컨테이너 전환
-        if (isErrroMode) {
-            errroContent.classList.add('active');
-            errroContent.classList.remove('inactive');
-            arrrchiveContent.classList.add('inactive');
-            arrrchiveContent.classList.remove('active');
-        } else {
-            errroContent.classList.add('inactive');
-            errroContent.classList.remove('active');
-            arrrchiveContent.classList.add('active');
-            arrrchiveContent.classList.remove('inactive');
-        }
+        // 초기 상태 설정
+        const isErrro = body.classList.contains('errro-mode');
+        updateToggleText(isErrro);
 
-        // 3. 토글 버튼 텍스트 업데이트
-        updateToggleText(isErrroMode);
+        toggleButton.addEventListener('click', () => {
+            // 1. Body 클래스 전환 (전체 테마 변경)
+            const isErrroMode = body.classList.toggle('errro-mode');
+            body.classList.toggle('arrrchive-mode', !isErrroMode);
+
+            // 2. 갤러리 콘텐츠 컨테이너 전환 (수정할 필요 없이, 이 로직이 두 콘텐츠를 전환합니다.)
+            if (isErrroMode) {
+                // ERRRO 모드 활성화: ERRRO 콘텐츠만 보임
+                errroContent.classList.add('active');
+                errroContent.classList.remove('inactive');
+                arrrchiveContent.classList.add('inactive');
+                arrrchiveContent.classList.remove('active');
+            } else {
+                // ARRRCHIVE 모드 활성화: ARRRCHIVE 콘텐츠만 보임
+                errroContent.classList.add('inactive');
+                errroContent.classList.remove('active');
+                arrrchiveContent.classList.add('active');
+                arrrchiveContent.classList.remove('inactive');
+            }
+
+            // 3. 토글 버튼 텍스트 업데이트
+            updateToggleText(isErrroMode);
+        });
     });
-
-});
