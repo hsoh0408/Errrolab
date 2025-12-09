@@ -43,9 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 1. 페이지 전환 로직 (SPA 스타일) ---
+    // ... (중략: setActivePage 함수는 그대로 유지) ...
+
     // URL 해시에 따라 초기 페이지 설정
-    const initialPage = window.location.hash ? window.location.hash.substring(1) : 'about';
+    // 초기 페이지를 'about'으로 강제 설정합니다.
+    const initialPage = 'about';
     setActivePage(initialPage);
+
+
+    // --- 2. 갤러리 모드 토글 로직 (중략: 기존 로직은 그대로 유지) ---
+    // ...
 
 
     // --- 2. 갤러리 모드 토글 로직 (기존 로직 유지) ---

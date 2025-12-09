@@ -28,8 +28,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: rgba(0, 0, 0, 0.9);
-    /* ERRRO 모드 대비 투명 배경 */
+    /* 배경은 각 모드에서 설정됨 */
 }
 
 #logo {
@@ -61,7 +60,6 @@ main {
 .page {
     position: absolute;
     top: 60px;
-    /* 헤더 아래에서 시작 */
     left: 0;
     width: 100%;
     transition: opacity 0.5s ease-in-out;
@@ -72,14 +70,12 @@ main {
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    /* inactive일 때도 절대 위치 유지 */
 }
 
 .page.active {
     opacity: 1;
     pointer-events: auto;
     position: relative;
-    /* active일 때 상대 위치로 변경 (스크롤 허용) */
 }
 
 .page-content {
@@ -99,43 +95,54 @@ main {
     font-family: var(--dot-font);
 }
 
-/* ======================================= */
-/* --- ERRRO 모드 (기본 테마) --- */
-/* ======================================= */
-.errro-mode {
-    background-color: #000;
-    color: var(--neon-blue);
+/* --- ABOUT 페이지 중앙 정렬 및 홈 스타일 --- */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    text-align: center;
 }
 
-.errro-mode header {
-    border-bottom: 1px solid var(--neon-blue);
+.intro-main .intro-logo {
+    font-size: 6em;
+    margin-bottom: 5px;
 }
 
-.errro-mode a,
-.errro-mode #logo {
-    color: var(--neon-blue);
-    text-shadow: 0 0 3px var(--neon-blue);
+.intro-main .intro-slogan {
+    font-size: 2em;
+    margin-bottom: 30px;
 }
 
-.errro-mode nav ul li a:hover {
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink);
+.intro-main .intro-video-link {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    border: 3px solid;
+    display: inline-block;
+    margin-top: 20px;
 }
 
-.errro-mode .title-font {
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-purple);
+.story-section {
+    padding-top: 50px;
+    max-width: 600px;
 }
+
 
 /* --- FACILITIES 페이지 스타일 --- */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
 .facility-card {
     position: relative;
-    width: 48%;
+    width: 45%;
+    /* 조정 */
     aspect-ratio: 4/3;
     overflow: hidden;
     cursor: pointer;
-    margin: 1%;
-    display: inline-block;
 }
 
 .facility-card img {
@@ -156,63 +163,111 @@ main {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    color: var(--neon-blue);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
     font-size: 2em;
-    text-shadow: 0 0 10px var(--neon-blue);
 }
 
 .facility-card:hover .overlay {
     opacity: 1;
 }
 
-/* --- GALLERY 페이지 그리드 --- */
+/* --- GALLERY 페이지 그리드 및 토글 --- */
 .gallery-page-container {
     position: relative;
     padding-bottom: 80px;
-    /* 토글 공간 */
 }
 
 .image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3열 그리드 */
     gap: 15px;
     margin-top: 30px;
 }
 
 .image-grid .grid-item {
     width: 100%;
-    height: 250px;
+    height: 180px;
+    /* 이미지 크기 조정 */
     object-fit: cover;
-    border: 1px solid var(--neon-blue);
 }
 
 .image-grid .wide {
     grid-column: span 2;
-    /* 두 칸 차지 */
+    height: 180px;
 }
 
-/* --- 토글 위치 재조정 (우측 하단) --- */
 #toggle-container {
     position: absolute;
-    /* 갤러리 컨테이너 내부 기준으로 배치 */
     bottom: 0;
     right: 20px;
     z-index: 50;
 }
 
-.errro-mode #mode-toggle {
-    color: var(--neon-pink);
-    border: 2px solid var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink);
+#mode-toggle {
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 5px 10px;
+    transition: color 0.3s, border-color 0.3s;
+    font-family: var(--dot-font);
 }
 
-/* --- JOIN US 버튼 --- */
+#mode-toggle .mode-text {
+    opacity: 0.5;
+}
+
+#mode-toggle .current-mode {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.archiver-r-section {
+    margin-top: 50px;
+    padding: 30px;
+    text-align: center;
+}
+
+.archiver-r-section .archiver-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+/* --- JOIN US 폼 스타일 --- */
+.workshop-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.workshop-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.workshop-section label {
+    margin-top: 10px;
+    font-family: var(--dot-font);
+    font-size: 1.1em;
+}
+
+.workshop-section input[type="text"],
+.workshop-section input[type="email"],
+.workshop-section textarea {
+    padding: 8px;
+    background: none;
+    border: 1px solid;
+    font-family: var(--dot-font);
+    font-size: 1em;
+}
+
 .submit-button {
     background-color: var(--neon-purple);
     color: #fff;
@@ -221,11 +276,70 @@ main {
     cursor: pointer;
     font-family: var(--dot-font);
     text-transform: uppercase;
-    box-shadow: 0 0 8px var(--neon-purple);
+    margin-top: 20px;
 }
 
 /* ======================================= */
-/* --- ARRRCHIVE 모드 (아날로그 테마) --- */
+/* --- 1. ERRRO 모드 (사이버펑크 네온) 스타일 --- */
+/* ======================================= */
+.errro-mode {
+    background-color: #000;
+    color: var(--neon-blue);
+}
+
+.errro-mode header {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--neon-blue);
+}
+
+.errro-mode a,
+.errro-mode #logo {
+    color: var(--neon-blue);
+    text-shadow: 0 0 3px var(--neon-blue);
+}
+
+.errro-mode nav ul li a:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.errro-mode .title-font {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-purple);
+}
+
+.errro-mode .intro-video-link {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.errro-mode .overlay {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.errro-mode .image-grid .grid-item {
+    border: 1px solid var(--neon-blue);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+.errro-mode #mode-toggle {
+    color: var(--neon-pink);
+    border: 2px solid var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.errro-mode .workshop-section input,
+.errro-mode .workshop-section textarea {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    box-shadow: 0 0 2px var(--neon-blue);
+}
+
+
+/* ======================================= */
+/* --- 2. ARRRCHIVE 모드 (아날로그 테마) --- */
 /* ======================================= */
 .arrrchive-mode {
     background-color: #fcf8e3;
@@ -254,6 +368,11 @@ main {
     text-shadow: none;
 }
 
+.arrrchive-mode .intro-video-link {
+    color: var(--neon-purple);
+    border-color: var(--neon-purple);
+}
+
 .arrrchive-mode .overlay {
     background: rgba(255, 255, 255, 0.8);
     color: #333;
@@ -275,17 +394,14 @@ main {
     background: #fff;
 }
 
-.archiver-r-section {
-    margin-top: 50px;
-    padding: 30px;
+.arrrchive-mode .archiver-r-section {
     border: 3px double var(--neon-blue);
     background: #fff;
-    text-align: center;
 }
 
-.archiver-r-section .archiver-img {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    margin-top: 15px;
+.arrrchive-mode .workshop-section input,
+.arrrchive-mode .workshop-section textarea {
+    border-color: #333;
+    color: #333;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
