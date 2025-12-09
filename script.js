@@ -2,23 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DOM 요소 변수 선언
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
+
+    // 갤러리 및 모드 관련 요소
     const toggleButton = document.getElementById('mode-toggle');
     const body = document.body;
     const errroContent = document.getElementById('errro-content');
     const arrrchiveContent = document.getElementById('arrrchive-content');
-    const glitchElement = document.getElementById('logo');
+
+    // 글리치 및 팝업 관련 요소
+    const glitchElements = document.querySelectorAll('#logo, .glitch-text'); // 글리치 적용 요소: 로고와 부제목
     const popup = document.getElementById('retro-popup');
 
     // --- 1. 페이지 전환 로직 (SPA 스타일) ---
     function setActivePage(targetPageId) {
         pages.forEach(page => {
             if (page.id === targetPageId) {
-                // 활성화될 페이지 설정: 높이를 잡게 하고 보이게 함
+                // 활성화될 페이지: 높이를 잡게 하고 보이게 함
                 page.classList.add('active');
                 page.classList.remove('inactive');
                 page.style.position = 'relative';
             } else {
-                // 비활성화될 페이지 설정: 숨기고 겹치게 함
+                // 비활성화될 페이지: 숨기고 겹치게 함
                 page.classList.add('inactive');
                 page.classList.remove('active');
                 page.style.position = 'absolute';
@@ -46,13 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 초기 페이지 설정: About 페이지로 시작
-    const initialPage = 'about';
+    // 초기 페이지 설정: #home 페이지로 시작
+    const initialPage = 'home';
     setActivePage(initialPage);
 
 
     // --- 2. 갤러리 모드 토글 로직 ---
     function updateToggleText(isErrroMode) {
+        if (!toggleButton) return;
         const errroText = toggleButton.querySelector('.mode-text:first-child');
         const arrrchiveText = toggleButton.querySelector('.mode-text:last-child');
 
@@ -107,11 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 간헐적 글리치 효과 적용 함수
     function initiateGlitch() {
-        if (!glitchElement) return;
-        if (Math.random() < 0.05) { // 5% 확률로 글리치 실행
-            glitchElement.classList.add('glitch-active');
+        if (glitchElements.length === 0) return;
+
+        // 5% 확률로 글리치 실행
+        if (Math.random() < 0.05) {
+            // 모든 글리치 요소에 적용
+            glitchElements.forEach(el => {
+                el.classList.add('glitch-active');
+            });
+
+            // 0.5초 후 글리치 종료
             setTimeout(() => {
-                glitchElement.classList.remove('glitch-active');
+                glitchElements.forEach(el => {
+                    el.classList.remove('glitch-active');
+                });
             }, 500);
         }
     }
@@ -130,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.opacity = '1';
 
             // 팝업 전체를 클릭했을 때 닫히도록 이벤트 리스너 추가 (팝업이 띄워질 때마다 추가)
-            popup.addEventListener('click', hidePopup, { once: true }); // 한 번만 실행되도록 once: true 사용
+            popup.addEventListener('click', hidePopup, { once: true });
 
             // 10초 후 팝업 자동 숨김
             setTimeout(hidePopup, 10000);
@@ -139,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 타이머 설정
     if (popup) {
-        // 로고 글리치 효과 1초마다 체크
+        // 로고/부제목 글리치 효과 1초마다 체크
         setInterval(initiateGlitch, 1000);
 
         // 팝업 30초마다 33% 확률로 등장 체크
