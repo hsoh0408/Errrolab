@@ -148,7 +148,7 @@ header {
 
 #dynamic-logo {
     padding: 20px 0px;
-    width: 200px;
+    width: 400px;
     /* 로고 이미지 크기 */
     height: auto;
 }
@@ -259,6 +259,7 @@ main#content-area {
 }
 
 .facility-card {
+    position: relative;
     width: 300px;
     height: 400px;
     cursor: pointer;
@@ -271,9 +272,6 @@ main#content-area {
     transition: opacity 0.3s;
 }
 
-/* --- 8. FACILITIES 페이지 스타일 --- */
-
-/* ... (기존 스타일 유지) ... */
 
 /* 오버레이 스타일 (Facility 카드 안에 이미 존재) */
 .facility-card .overlay {
