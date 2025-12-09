@@ -448,6 +448,23 @@ main#content-area {
 }
 
 
+/* --- ARRRCHIVER R 링크 스타일 --- */
+
+.archiver-r-section .archiver-social-link {
+    font-size: 1.4em;
+    margin: 20px 0;
+    /* 위아래 여백 추가 */
+}
+
+/* ARRRCHIVE 모드에서 링크 색상 적용 */
+.arrrchive-mode .archiver-social-link a {
+    color: #000;
+    /* 검정색 계열로 유지 */
+    text-shadow: none;
+    text-decoration: underline;
+    /* 링크임을 강조 */
+}
+
 
 /* ======================================= */
 /* --- 10. JOIN US 페이지 스타일 --- */
