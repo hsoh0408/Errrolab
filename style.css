@@ -163,12 +163,12 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    margin-right: 180px;
+    margin-right: 100px;
     /* 내비게이션 바 위치 조정 */
 }
 
 nav ul li a {
-    margin-left: 45px;
+    margin-left: 60px;
     font-family: var(--main-font);
     text-transform: uppercase;
     transition: none;
@@ -180,9 +180,9 @@ nav ul li a {
 /* --- 5. 페이지 전환 (공통) --- */
 /* ======================================= */
 main#content-area {
-    padding-top: 80px;
+    padding-top: 92px;
     position: relative;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 92px);
 }
 
 .page {
@@ -212,12 +212,36 @@ main#content-area {
 /* ======================================= */
 /* --- 6. HOME 페이지 스타일 --- */
 /* ======================================= */
+#home .intro-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+#home .intro-slogan {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
 .home-video iframe {
     width: 175px;
     height: 311px;
 }
 
-/* ... (나머지 홈 페이지 스타일 유지) ... */
+.home-video {
+    margin: 30px auto;
+    max-width: 350px;
+}
+
+.main-text {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.creator-info {
+    font-size: 1.2em;
+    margin-top: 50px;
+}
 
 
 /* ======================================= */
@@ -228,7 +252,39 @@ main#content-area {
     height: 200px;
 }
 
-/* ... (나머지 FACILITIES 스타일 유지) ... */
+.facility-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.facility-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.facility-card:hover img {
+    opacity: 0.3;
+}
+
+.facility-card:hover .overlay {
+    opacity: 1;
+}
+
+.facility-card .overlay span {
+    font-size: 2em;
+    font-weight: bold;
+}
 
 
 /* ======================================= */
