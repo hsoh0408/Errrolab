@@ -225,8 +225,8 @@ main#content-area {
 }
 
 .home-video iframe {
-    width: 400px;
-    height: auto;
+    width: 360px;
+    height: 640px;
 }
 
 .home-video {
@@ -271,6 +271,11 @@ main#content-area {
     transition: opacity 0.3s;
 }
 
+/* --- 8. FACILITIES 페이지 스타일 --- */
+
+/* ... (기존 스타일 유지) ... */
+
+/* 오버레이 스타일 (Facility 카드 안에 이미 존재) */
 .facility-card .overlay {
     position: absolute;
     top: 0;
@@ -282,25 +287,20 @@ main#content-area {
     justify-content: center;
     align-items: center;
     opacity: 0;
+    /* 평소에는 숨김 */
     transition: opacity 0.3s;
 }
 
+/* ⭐ 호버링 기능 복원 (CSS 선택자 수정) ⭐ */
+/* facility-card에 호버 시, 내부의 img를 어둡게 함 */
 .facility-card:hover img {
     opacity: 0.3;
 }
 
+/* facility-card에 호버 시, 내부의 overlay를 보이게 함 */
 .facility-card:hover .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s;
+    opacity: 1;
+    /* 오버레이 표시 */
 }
 
 .facility-card .overlay span {
@@ -454,9 +454,27 @@ main#content-area {
 /* ======================================= */
 /* --- 10. JOIN US 페이지 스타일 --- */
 /* ======================================= */
+
+.workshop-image-container {
+    /* 이미지를 중앙에 배치하기 위해 컨테이너를 중앙 정렬 */
+    text-align: center;
+    margin: 30px auto;
+    /* 이미지 자체의 너비를 중앙 컨테이너(page-content) 기준으로 80%로 설정하기 위해 최대 너비 지정 */
+    /* page-content가 이미 max-width: 1000px 이므로, 이를 기준으로 80%를 계산합니다. */
+    max-width: 80%;
+}
+
+.workshop-image {
+    /* 이미지가 부모 컨테이너(workshop-image-container)의 너비를 100% 채우도록 설정 */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .workshop-section {
     max-width: 600px;
     margin: 50px auto;
+    margin-top: 50px;
     text-align: left;
 }
 
