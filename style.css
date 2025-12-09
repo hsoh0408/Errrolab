@@ -22,6 +22,7 @@ body {
 }
 
 /* --- HEADER & NAVIGATION --- */
+/* --- HEADER & NAVIGATION --- */
 header {
     position: fixed;
     top: 0;
@@ -34,27 +35,37 @@ header {
     padding: 15px 30px;
 }
 
+/* 이 부분은 그대로 둡니다. */
+
+/* nav ul의 간격을 늘려서 링크들을 왼쪽으로 밀어냅니다. */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* 추가: 전체 내비게이션 컨테이너의 너비를 좁혀서 왼쪽으로 당깁니다. */
+    width: auto;
+    max-width: 400px;
+    /* 최대 너비를 제한하여 좌측으로 당김 */
+    margin-right: 50px;
+    /* 헤더 오른쪽 여백을 추가하여 로고와의 간격 확보 */
+}
+
+nav ul li a {
+    text-decoration: none;
+    margin-left: 35px;
+    /* 링크 간격을 20px에서 35px로 늘림 */
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
 #logo {
     font-family: var(--title-font);
     /* 타이틀 폰트 */
     font-size: 1.5em;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li a {
-    text-decoration: none;
-    margin-left: 20px;
-    font-family: var(--main-font);
-    /* Amatic SC로 통일 */
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
 
 /* --- 페이지 컨테이너 --- */
 main {
@@ -465,89 +476,35 @@ main {
     animation: glitch-anim 0.2s infinite alternate;
 }
 
+/* style.css 파일에 있는 기존 #retro-popup 관련 모든 CSS를 제거하고 아래 코드로 교체합니다. */
 
-/*팝업*/
-/* --- 레트로 팝업 스타일 --- */
+/* --- 레트로 팝업 스타일 (이미지 버전) --- */
 #retro-popup {
     position: fixed;
     top: 15%;
-    /* 화면 상단에서 15% 위치 */
     left: 50%;
-    /* 화면 중앙 */
     transform: translateX(-50%);
-    /* 정확히 중앙 정렬 */
-    width: 350px;
+    width: auto;
+    /* 이미지 크기에 맞게 자동 조절 */
     z-index: 9999;
-    /* 모든 요소 위에 보이도록 */
-    border: 3px solid #000;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
-    /* 윈도우 스타일 그림자 */
-    background-color: #C0C0C0;
-    /* 윈도우 회색 배경 */
-    font-family: var(--dot-font);
-    /* 윈도우/도트 폰트 느낌 유지 */
 
+    /* 팝업 창 이미지에 마우스를 올려도 팝업이 사라지도록 커서를 포인터로 설정 */
+    cursor: pointer;
+
+    /* 투명도와 위치 전환 효과는 유지 */
     transition: opacity 0.3s, transform 0.3s;
+}
+
+.popup-image {
+    width: 350px;
+    /* 이미지의 최대 너비를 지정하여 크기 제어 */
+    height: auto;
+    display: block;
 }
 
 .popup-inactive {
     display: none;
-    /* JS가 아닌 CSS로 완전히 숨김 */
     opacity: 0;
 }
 
-.popup-header {
-    background-color: #0A246A;
-    /* 윈도우 타이틀 바 색상 */
-    color: white;
-    padding: 3px 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-}
-
-.popup-controls span {
-    border: 1px solid white;
-    padding: 0 5px;
-    margin-left: 5px;
-    background-color: #C0C0C0;
-    color: #000;
-    cursor: pointer;
-}
-
-.popup-body {
-    display: flex;
-    padding: 20px;
-    align-items: center;
-}
-
-.error-icon {
-    width: 48px;
-    height: 48px;
-    margin-right: 15px;
-}
-
-.popup-message p {
-    margin: 5px 0;
-    font-family: var(--main-font);
-    /* 본문은 Amatic SC로 유지 */
-    color: #000;
-    font-size: 1.1em;
-}
-
-.popup-footer {
-    padding: 10px;
-    text-align: center;
-    border-top: 2px solid #fff;
-}
-
-.ok-button {
-    padding: 5px 20px;
-    background-color: #C0C0C0;
-    border: 2px outset #fff;
-    box-shadow: 2px 2px 0 #000;
-    cursor: pointer;
-    font-family: var(--main-font);
-    font-size: 1.1em;
-}
+/* 기존 popup-header, popup-body, ok-button 관련 CSS는 모두 제거합니다. */
