@@ -8,25 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const errroContent = document.getElementById('errro-content');
     const arrrchiveContent = document.getElementById('arrrchive-content');
-    const errroIcon = document.getElementById('errro-icon'); // 토글 아이콘
-    const archiveIcon = document.getElementById('archive-icon'); // 토글 아이콘
-    const archiverR = document.querySelector('.archiver-r-section'); // ARRRCHIVER R 섹션
+    const errroIcon = document.getElementById('errro-icon');
+    const archiveIcon = document.getElementById('archive-icon');
+    const archiverR = document.querySelector('.archiver-r-section');
 
     // 로고 및 글리치, 팝업 관련 요소
     const dynamicLogo = document.getElementById('dynamic-logo');
-    const allGlitchTextElements = document.querySelectorAll('.glitch-text'); // 부제목
+    const allGlitchTextElements = document.querySelectorAll('.glitch-text');
     const popup = document.getElementById('retro-popup');
+
+    // 로고 링크 요소 (새로 가져옴)
+    const logoLinkElement = document.getElementById('home-link');
 
     // --- 1. 페이지 전환 로직 (SPA 스타일) ---
     function setActivePage(targetPageId) {
         pages.forEach(page => {
             if (page.id === targetPageId) {
-                // 활성화될 페이지
                 page.classList.add('active');
                 page.classList.remove('inactive');
                 page.style.position = 'relative';
             } else {
-                // 비활성화될 페이지
                 page.classList.add('inactive');
                 page.classList.remove('active');
                 page.style.position = 'absolute';
@@ -54,14 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 로고 클릭 이벤트 리스너 추가 (수정/추가됨) ---
+    if (logoLinkElement) {
+        logoLinkElement.addEventListener('click', (e) => {
+            e.preventDefault();
+            setActivePage('home');
+            window.scrollTo(0, 0);
+            window.history.pushState(null, '', '#home');
+        });
+    }
+
     // 초기 페이지 설정: #home 페이지로 시작
     const initialPage = 'home';
     setActivePage(initialPage);
 
 
     // --- 2. 갤러리 모드 토글 및 로고 이미지 전환 로직 ---
+    function updateToggleText(isErrroMode) {
+        if (!toggleButton) return;
+        const errroText = toggleButton.querySelector('.mode-text:first-child');
+        const arrrchiveText = toggleButton.querySelector('.mode-text:last-child');
 
-    // 로고 이미지 경로 전환 함수
+        if (isErrroMode) {
+            errroText.classList.add('current-mode');
+            arrrchiveText.classList.remove('current-mode');
+        } else {
+            errroText.classList.remove('current-mode');
+            arrrchiveText.classList.add('current-mode');
+        }
+    }
+
     function updateLogoImage(isErrroMode) {
         if (dynamicLogo) {
             if (isErrroMode) {
@@ -72,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 갤러리 아이콘 시각적 상태 업데이트 함수 (토글 아이콘 전환)
     function updateIcons(isErrroMode) {
         if (errroIcon && archiveIcon) {
             if (isErrroMode) {
@@ -89,27 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ARRRCHIVER R 소개 섹션 전환 함수 (5번 요청 반영)
     function updateArchiverVisibility(isErrroMode) {
         if (archiverR) {
             if (isErrroMode) {
-                // ERRRO 모드: R 소개 숨김
                 archiverR.classList.add('archiver-hidden');
                 archiverR.classList.remove('archiver-visible');
             } else {
-                // ARRRCHIVE 모드: R 소개 보임
                 archiverR.classList.add('archiver-visible');
                 archiverR.classList.remove('archiver-hidden');
             }
         }
     }
 
-    // 초기 로고 및 아이콘 설정
     updateLogoImage(true);
     updateIcons(true);
-    updateArchiverVisibility(false); // 초기에는 R 소개 숨김
+    updateArchiverVisibility(false);
 
-    // 토글 버튼 클릭 이벤트 설정
     if (toggleButton) {
         toggleButton.addEventListener('click', () => {
             const isErrroMode = body.classList.toggle('errro-mode');
@@ -117,9 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             updateLogoImage(isErrroMode);
             updateIcons(isErrroMode);
-            updateArchiverVisibility(isErrroMode); // R 소개 전환
+            updateArchiverVisibility(isErrroMode);
 
-            // 갤러리 콘텐츠 전환 (ERRRO 이미지 <-> ARRRCHIVE 이미지)
             if (errroContent && arrrchiveContent) {
                 if (isErrroMode) {
                     errroContent.classList.add('active');
@@ -149,14 +165,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 간헐적 글리치 효과 적용 함수 (확률 40% 적용)
+    // 간헐적 글리치 효과 적용 함수 (확률 40%)
     function initiateGlitch() {
-        if (allGlitchTextElements.length === 0 && !dynamicLogo) return;
+        const allGlitchElements = document.querySelectorAll('.glitch-text'); // 부제목
+
+        if (allGlitchElements.length === 0 && !dynamicLogo) return;
 
         // 40% 확률로 글리치 실행
         if (Math.random() < 0.4) {
             // 텍스트 글리치 적용 (부제목)
-            allGlitchTextElements.forEach(el => {
+            allGlitchElements.forEach(el => {
                 el.classList.add('glitch-active');
             });
 
@@ -167,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 0.5초 후 글리치 종료
             setTimeout(() => {
-                allGlitchTextElements.forEach(el => {
+                allGlitchElements.forEach(el => {
                     el.classList.remove('glitch-active');
                 });
                 if (dynamicLogo) {
@@ -182,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (popup && popup.classList.contains('popup-inactive')) {
             popup.style.display = 'block';
 
-            // 팝업 위치를 랜덤하게 조정
             const randomX = Math.floor(Math.random() * 200) - 100;
             const randomY = Math.floor(Math.random() * 50) - 25;
             popup.style.transform = `translate(calc(-50% + ${randomX}px), ${randomY}px)`;
@@ -190,31 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.classList.remove('popup-inactive');
             popup.style.opacity = '1';
 
-            // 팝업 전체를 클릭했을 때 닫히도록 이벤트 리스너 추가 
             popup.addEventListener('click', hidePopup, { once: true });
 
-            // 10초 후 팝업 자동 숨김
             setTimeout(hidePopup, 10000);
         }
     }
 
-    // 로고 호버 글리치: 마우스 오버 시 이미지 글리치 적용
-    const logoLink = document.getElementById('home-link');
-    if (logoLink) {
-        logoLink.addEventListener('mouseenter', () => {
-            if (dynamicLogo) dynamicLogo.classList.add('glitch-image-active');
-        });
-        logoLink.addEventListener('mouseleave', () => {
-            if (dynamicLogo) dynamicLogo.classList.remove('glitch-image-active');
-        });
-    }
-
     // 타이머 설정
     if (popup) {
-        // 로고/부제목 간헐적 글리치 효과 1초마다 체크
         setInterval(initiateGlitch, 1000);
 
-        // 팝업 30초마다 33% 확률로 등장 체크
         setInterval(() => {
             if (Math.random() < 0.33) {
                 showPopup();
