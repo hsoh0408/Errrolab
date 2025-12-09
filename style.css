@@ -51,9 +51,6 @@ body {
 .errro-mode #logo-image {
     filter: brightness(1) drop-shadow(0 0 3px var(--neon-blue));
     transition: filter 0.3s;
-    width: 80px;
-    /* 로고 이미지 크기 */
-    height: auto;
 }
 
 .errro-mode h2,
@@ -85,9 +82,6 @@ body {
 .arrrchive-mode #logo-image {
     filter: grayscale(1) brightness(0.5);
     transition: filter 0.3s;
-    width: 80px;
-    /* 로고 이미지 크기 */
-    height: auto;
 }
 
 .arrrchive-mode h2,
@@ -153,7 +147,7 @@ header {
 }
 
 #logo-image {
-    width: 80px;
+    width: 400px;
     /* 로고 이미지 크기 */
     height: auto;
 }
