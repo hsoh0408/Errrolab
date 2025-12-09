@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const archiverR = document.querySelector('.archiver-r-section');
 
     // 로고 및 글리치, 팝업 관련 요소
-    const dynamicLogo = document.getElementById('dynamic-logo');
+    const dynamicLogo = document.getElementById('logo-image');
     const allGlitchTextElements = document.querySelectorAll('.glitch-text');
     const popup = document.getElementById('retro-popup');
 
