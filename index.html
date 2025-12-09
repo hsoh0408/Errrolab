@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERRRO / ARRRCHIVE Project</title>
+    <title>ERROLAB PROJECT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Rock+3D&display=swap"
@@ -13,69 +13,121 @@
 </head>
 
 <body class="errro-mode">
-    <div id="toggle-container">
-        <button id="mode-toggle" aria-label="모드 전환 버튼">
-            <span class="mode-text current-mode">ERRRO</span> / <span class="mode-text">ARRRCHIVE</span>
-        </button>
-    </div>
 
-    <div id="errro-content" class="content-container active">
-        <div class="website-content">
-            <div class="content-item logo-area">
-                <img src="errro_logo.png" alt="ERRRO 로고" class="logo-image">
-                <h1>E R R R O</h1>
-            </div>
+    <header>
+        <div id="logo">ERROLAB</div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link" data-page="about">ABOUT</a></li>
+                <li><a href="#facilities" class="nav-link" data-page="facilities">FACILITIES</a></li>
+                <li><a href="#gallery" class="nav-link" data-page="gallery">GALLERY</a></li>
+                <li><a href="#join-us" class="nav-link" data-page="join-us">JOIN US</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <div class="content-item story-area">
-                <a href="#" class="story-button">브랜드 스토리 보기 [CLICK]</a>
-            </div>
+    <main id="content-area">
 
-            <div class="content-item video-area">
-                <p>브랜드 티저 영상</p>
-                <a href="[당신의 인스타그램 릴스 링크]" target="_blank" class="video-link">티저 영상 링크</a>
+        <section id="about" class="page active">
+            <div class="page-content">
+                <h1 class="title-font">ABOUT ERROLAB</h1>
+                <p>Welcome to Errolab, a space dedicated to exploring the intersection of retro aesthetics and digital
+                    archives.</p>
+                <div class="story-section">
+                    <h2>BRAND STORY</h2>
+                    <p>Error, Archive, and Retro. We seek beauty in the corrupted and the nostalgic.</p>
+                    <h2>SLOGAN</h2>
+                    <p class="slogan dot-font">"FIND BEAUTY IN THE ERRORS."</p>
+                </div>
             </div>
+        </section>
 
-            <div class="content-item image-gallery">
-                <img src="errro_img_1.jpeg" alt="레트로 이미지 1" class="gallery-image img-1">
-                <p class="image-text txt-2">[001] 이미지 설명 텍스트</p>
-                <img src="errro_image_2.jpeg" alt="레트로 이미지 2" class="gallery-image img-3">
+        <section id="facilities" class="page inactive">
+            <div class="page-content">
+                <h1 class="title-font">FACILITIES</h1>
+                <div class="card-container">
+                    <div class="facility-card" data-hover-text="CREATE">
+                        <img src="facility_create.jpeg" alt="Create Area">
+                        <div class="overlay"><span class="dot-font">CREATE</span></div>
+                    </div>
+                    <div class="facility-card" data-hover-text="EXHIBIT">
+                        <img src="facility_exhibit.png" alt="Exhibit Hall">
+                        <div class="overlay"><span class="dot-font">EXHIBIT</span></div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="content-item social-area">
-                <p>Connect with Us:</p>
-                <a href="[당신의 인스타그램 계정 링크]" target="_blank" class="social-link">@INSTAGRAM_ERRRO</a>
-            </div>
-        </div>
-    </div>
+        <section id="gallery" class="page inactive">
+            <div class="page-content gallery-page-container">
+                <h1 class="title-font">GALLERY</h1>
 
-    <div id="arrrchive-content" class="content-container inactive">
-        <div class="website-content">
-            <div class="content-item logo-area">
-                <img src="arrrchive_logo.png" alt="ARRRCHIVE 로고" class="logo-image">
-                <h1>A R R R C H I V E</h1>
-            </div>
+                <div id="toggle-container">
+                    <button id="mode-toggle" aria-label="Toggle Mode">
+                        <span class="mode-text current-mode dot-font">ERRRO</span> / <span
+                            class="mode-text dot-font">ARRRCHIVE</span>
+                    </button>
+                </div>
 
-            <div class="content-item story-area">
-                <a href="#" class="story-button">브랜드 스토리 보기 [손글씨 버튼]</a>
-            </div>
+                <div id="errro-content" class="content-container active">
+                    <div class="gallery-section">
+                        <h2>ERRRO: THE CORRUPTED SIGNAL</h2>
+                        <div class="image-grid">
+                            <img src="errro_img_a.jpeg" alt="Errro Image A" class="grid-item">
+                            <img src="errro_img_b.jpeg" alt="Errro Image B" class="grid-item">
+                            <img src="errro_img_c.png" alt="Errro Image C" class="grid-item wide">
+                            <img src="errro_img_d.png" alt="Errro Image D" class="grid-item">
+                        </div>
+                        <a href="[당신의 인스타그램 릴스 링크]" target="_blank" class="video-link dot-font">VIEW TEASER VIDEO</a>
+                    </div>
+                    <p class="social-link dot-font">FOLLOW US: <a
+                            href="https://www.instagram.com/reel/DR-bJgnE3e1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">@ERROLAB</a>
+                    </p>
+                </div>
 
-            <div class="content-item video-area">
-                <p>브랜드 티저 영상</p>
-                <a href="[당신의 인스타그램 릴스 링크]" target="_blank" class="video-link">손글씨 릴스 링크</a>
-            </div>
+                <div id="arrrchive-content" class="content-container inactive">
+                    <div class="gallery-section">
+                        <h2>ARRRCHIVE: THE ANALOGUE RECORD</h2>
+                        <div class="image-grid">
+                            <img src="arrrchive_img_a.png" alt="Archive Image A" class="grid-item">
+                            <img src="arrrchive_img_b.png" alt="Archive Image B" class="grid-item">
+                            <img src="arrrchive_img_c.png" alt="Archive Image C" class="grid-item wide">
+                            <img src="arrrchive_img_d.png" alt="Archive Image D" class="grid-item">
+                        </div>
+                    </div>
+                    <div class="archiver-r-section dot-font">
+                        <h3 class="title-font">MEET ARRRCHIVER "R"</h3>
+                        <p>The sentient archive that curates the analogue records of Errolab. This is the keeper of all
+                            forgotten memories.</p>
+                        <img src="archiver_r_profile.jpeg" alt="Archiver R Profile" class="archiver-img">
+                    </div>
+                </div>
 
-            <div class="content-item image-gallery">
-                <img src="arrrchive_img_1.jpeg" alt="아날로그 이미지 1" class="gallery-image img-1">
-                <p class="image-text txt-2">[001] 노트 속 기록</p>
-                <img src="arrrchive_img_2.png" alt="아날로그 이미지 2" class="gallery-image img-3">
             </div>
+        </section>
 
-            <div class="content-item social-area">
-                <p>연결된 계정:</p>
-                <a href="[당신의 인스타그램 계정 링크]" target="_blank" class="social-link">@INSTAGRAM_ARRRCHIVE</a>
+        <section id="join-us" class="page inactive">
+            <div class="page-content">
+                <h1 class="title-font">JOIN US</h1>
+                <div class="workshop-section">
+                    <h2>WORRRKSHOP APPLICATION</h2>
+                    <form>
+                        <label for="name">NAME:</label>
+                        <input type="text" id="name" name="name" class="dot-font" required>
+
+                        <label for="email">EMAIL:</label>
+                        <input type="email" id="email" name="email" class="dot-font" required>
+
+                        <label for="message">MESSAGE / INTENTION:</label>
+                        <textarea id="message" name="message" class="dot-font" rows="5" required></textarea>
+
+                        <button type="submit" class="submit-button">SUBMIT APPLICATION</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>

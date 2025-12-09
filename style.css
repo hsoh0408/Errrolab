@@ -1,139 +1,209 @@
-/* --- 변수 정의 (네온 컬러) --- */
+/* --- 변수 및 폰트 설정 --- */
 :root {
     --neon-pink: #FF69B4;
-    /* 네온 핑크 */
     --neon-blue: #00FFFF;
-    /* 네온 블루 (사이언) */
     --neon-purple: #8A2BE2;
-    /* 보라색 */
     --main-font: 'Amatic SC', cursive;
     --title-font: 'Rock 3D', cursive;
     --dot-font: 'Courier New', monospace;
-    /* 도트/픽셀 대체 폰트 */
 }
 
-/* --- 공통 레이아웃 --- */
+/* --- 공통 기본 설정 --- */
 body {
     transition: background-color 0.5s, color 0.5s;
     font-size: 18px;
-    /* 본문 폰트 크기 증가 */
     margin: 0;
-    padding-top: 50px;
     min-height: 100vh;
     font-family: var(--main-font);
-    /* 기본 본문 폰트 적용 */
 }
 
-.content-container {
-    position: absolute;
+/* --- HEADER & NAVIGATION --- */
+header {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.9);
+    /* ERRRO 모드 대비 투명 배경 */
 }
 
-.content-container.inactive {
+#logo {
+    font-family: var(--title-font);
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    margin-left: 20px;
+    font-family: var(--dot-font);
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+/* --- 페이지 컨테이너 --- */
+main {
+    padding-top: 60px;
+    /* 헤더 공간 */
+}
+
+.page {
+    position: absolute;
+    top: 60px;
+    /* 헤더 아래에서 시작 */
+    left: 0;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+    min-height: calc(100vh - 60px);
+}
+
+.page.inactive {
     opacity: 0;
     pointer-events: none;
+    position: absolute;
+    /* inactive일 때도 절대 위치 유지 */
 }
 
-.content-container.active {
+.page.active {
     opacity: 1;
     pointer-events: auto;
-}
-
-.website-content {
     position: relative;
-    max-width: 1200px;
+    /* active일 때 상대 위치로 변경 (스크롤 허용) */
+}
+
+.page-content {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-    min-height: 800px;
+    padding: 40px 20px;
 }
 
-/* 모든 콘텐츠 요소들의 공통 배치 (위치 일치 핵심) */
-/* 이 위치 값들은 이전 코드와 동일하게 유지되어 전환 시 대응됩니다. */
-.content-item {
-    position: absolute;
-    padding: 10px;
+.title-font {
+    font-family: var(--title-font);
+    font-size: 3em;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-.logo-area {
-    top: 50px;
-    left: 50px;
-}
-
-.story-area {
-    top: 200px;
-    right: 50px;
-}
-
-.video-area {
-    top: 350px;
-    left: 100px;
-    width: 300px;
-}
-
-.image-gallery {
-    top: 450px;
-    left: 50px;
-    width: 60%;
-}
-
-.social-area {
-    bottom: 50px;
-    right: 50px;
-}
-
-/* --- 토글 버튼 스타일 --- */
-#toggle-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-#mode-toggle {
-    background: none;
-    cursor: pointer;
-    font-weight: bold;
-    outline: none;
-    padding: 5px 10px;
-    transition: color 0.3s, border-color 0.3s;
+.dot-font {
     font-family: var(--dot-font);
-    /* 도트/픽셀 폰트 적용 */
 }
-
-#mode-toggle .mode-text {
-    opacity: 0.5;
-}
-
-#mode-toggle .current-mode {
-    opacity: 1;
-    text-decoration: none;
-}
-
 
 /* ======================================= */
-/* --- 1. ERRRO 모드 (사이버펑크 네온) 스타일 --- */
+/* --- ERRRO 모드 (기본 테마) --- */
 /* ======================================= */
 .errro-mode {
     background-color: #000;
     color: var(--neon-blue);
-    /* 기본 텍스트 색상 */
 }
 
-.errro-mode .logo-area h1 {
-    font-family: var(--title-font);
-    font-size: 4em;
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 20px var(--neon-purple);
-    /* 네온 효과 */
+.errro-mode header {
+    border-bottom: 1px solid var(--neon-blue);
 }
 
-.errro-mode a {
+.errro-mode a,
+.errro-mode #logo {
     color: var(--neon-blue);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--neon-blue);
+    text-shadow: 0 0 3px var(--neon-blue);
+}
+
+.errro-mode nav ul li a:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.errro-mode .title-font {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-purple);
+}
+
+/* --- FACILITIES 페이지 스타일 --- */
+.facility-card {
+    position: relative;
+    width: 48%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1%;
+    display: inline-block;
+}
+
+.facility-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s;
+}
+
+.facility-card:hover img {
+    filter: brightness(0.5);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--neon-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 2em;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.facility-card:hover .overlay {
+    opacity: 1;
+}
+
+/* --- GALLERY 페이지 그리드 --- */
+.gallery-page-container {
+    position: relative;
+    padding-bottom: 80px;
+    /* 토글 공간 */
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3열 그리드 */
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.image-grid .grid-item {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid var(--neon-blue);
+}
+
+.image-grid .wide {
+    grid-column: span 2;
+    /* 두 칸 차지 */
+}
+
+/* --- 토글 위치 재조정 (우측 하단) --- */
+#toggle-container {
+    position: absolute;
+    /* 갤러리 컨테이너 내부 기준으로 배치 */
+    bottom: 0;
+    right: 20px;
+    z-index: 50;
 }
 
 .errro-mode #mode-toggle {
@@ -142,53 +212,61 @@ body {
     text-shadow: 0 0 5px var(--neon-pink);
 }
 
-.errro-mode .story-button {
+/* --- JOIN US 버튼 --- */
+.submit-button {
     background-color: var(--neon-purple);
     color: #fff;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
+    cursor: pointer;
     font-family: var(--dot-font);
-    box-shadow: 0 0 5px var(--neon-purple);
-}
-
-.errro-mode .video-link,
-.errro-mode .social-link {
-    font-family: var(--dot-font);
-    /* 강조 폰트 적용 */
-}
-
-.errro-mode .image-gallery img {
-    border: 3px solid var(--neon-blue);
-    box-shadow: 0 0 8px var(--neon-blue);
-    width: 200px;
-    /* 이미지 크기 예시 */
-    height: auto;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px var(--neon-purple);
 }
 
 /* ======================================= */
-/* --- 2. ARRRCHIVE 모드 (아날로그 노트) 스타일 --- */
+/* --- ARRRCHIVE 모드 (아날로그 테마) --- */
 /* ======================================= */
 .arrrchive-mode {
-    background-color: #ffffff;
-    /* 흰색 바탕 */
+    background-color: #fcf8e3;
     color: #333;
-    /* 기본 텍스트 색상 */
-    /* 줄노트 효과 (선택 사항) */
     background-image: linear-gradient(to bottom, transparent 95%, #ddd 95%);
     background-size: 100% 20px;
 }
 
-.arrrchive-mode .logo-area h1 {
-    font-family: var(--title-font);
-    font-size: 3.5em;
-    color: var(--neon-purple);
-    /* 아날로그에서 강조 컬러 사용 */
+.arrrchive-mode header {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #ddd;
 }
 
-.arrrchive-mode a {
-    color: #666;
-    text-decoration: none;
-    border-bottom: 1px dotted #666;
+.arrrchive-mode a,
+.arrrchive-mode #logo {
+    color: var(--neon-purple);
+    text-shadow: none;
+}
+
+.arrrchive-mode nav ul li a:hover {
+    color: var(--neon-pink);
+}
+
+.arrrchive-mode .title-font {
+    color: var(--neon-purple);
+    text-shadow: none;
+}
+
+.arrrchive-mode .overlay {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    text-shadow: none;
+}
+
+.arrrchive-mode .facility-card img {
+    filter: grayscale(100%);
+}
+
+.arrrchive-mode .image-grid .grid-item {
+    border: 2px dashed #333;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .arrrchive-mode #mode-toggle {
@@ -197,24 +275,17 @@ body {
     background: #fff;
 }
 
-.arrrchive-mode .story-button {
-    border: 2px solid var(--neon-blue);
+.archiver-r-section {
+    margin-top: 50px;
+    padding: 30px;
+    border: 3px double var(--neon-blue);
     background: #fff;
-    padding: 10px 15px;
-    font-family: var(--main-font);
-    font-size: 1.2em;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    /* 종이 위에 그림자 느낌 */
+    text-align: center;
 }
 
-.arrrchive-mode .image-gallery img {
-    border: 5px double var(--neon-purple);
-    width: 200px;
+.archiver-r-section .archiver-img {
+    width: 150px;
     height: auto;
-}
-
-.arrrchive-mode .image-text {
-    font-family: var(--dot-font);
-    /* 아날로그 모드에서 도트 폰트를 강조 텍스트로 사용 */
-    color: var(--neon-blue);
+    border-radius: 50%;
+    margin-top: 15px;
 }
