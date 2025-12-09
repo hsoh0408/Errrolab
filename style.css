@@ -4,8 +4,11 @@
     --neon-blue: #00FFFF;
     --neon-purple: #8A2BE2;
     --main-font: 'Amatic SC', cursive;
+    /* 모든 본문, 링크, 버튼에 사용 */
     --title-font: 'Rock 3D', cursive;
+    /* 모든 타이틀에 사용 */
     --dot-font: 'Courier New', monospace;
+    /* 사용하지 않지만 정의는 유지 */
 }
 
 /* --- 공통 기본 설정 --- */
@@ -15,6 +18,7 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: var(--main-font);
+    /* 본문 기본 폰트 */
 }
 
 /* --- HEADER & NAVIGATION --- */
@@ -28,11 +32,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    /* 배경은 각 모드에서 설정됨 */
 }
 
 #logo {
     font-family: var(--title-font);
+    /* 타이틀 폰트 */
     font-size: 1.5em;
 }
 
@@ -46,7 +50,8 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     margin-left: 20px;
-    font-family: var(--dot-font);
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
     text-transform: uppercase;
     transition: color 0.3s;
 }
@@ -54,7 +59,6 @@ nav ul li a {
 /* --- 페이지 컨테이너 --- */
 main {
     padding-top: 60px;
-    /* 헤더 공간 */
 }
 
 .page {
@@ -86,13 +90,15 @@ main {
 
 .title-font {
     font-family: var(--title-font);
+    /* 타이틀 폰트 */
     font-size: 3em;
     margin-bottom: 30px;
     text-align: center;
 }
 
 .dot-font {
-    font-family: var(--dot-font);
+    /* 이 클래스는 더 이상 사용되지 않지만, 다른 텍스트가 있다면 main-font로 대체합니다. */
+    font-family: var(--main-font);
 }
 
 /* --- ABOUT 페이지 중앙 정렬 및 홈 스타일 --- */
@@ -121,6 +127,8 @@ main {
     border: 3px solid;
     display: inline-block;
     margin-top: 20px;
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
 }
 
 .story-section {
@@ -139,7 +147,6 @@ main {
 .facility-card {
     position: relative;
     width: 45%;
-    /* 조정 */
     aspect-ratio: 4/3;
     overflow: hidden;
     cursor: pointer;
@@ -171,6 +178,11 @@ main {
     font-size: 2em;
 }
 
+.overlay span {
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
+}
+
 .facility-card:hover .overlay {
     opacity: 1;
 }
@@ -191,7 +203,6 @@ main {
 .image-grid .grid-item {
     width: 100%;
     height: 180px;
-    /* 이미지 크기 조정 */
     object-fit: cover;
 }
 
@@ -200,61 +211,31 @@ main {
     height: 180px;
 }
 
-
-/* style.css 파일 확인 */
-
-.content-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* 비활성화된 컨테이너는 투명하고, 클릭할 수 없게 함 */
-.content-container.inactive {
-    opacity: 0;
-    pointer-events: none;
-    /* 클릭 이벤트 방지 (아래 콘텐츠가 클릭되는 것을 막음) */
-    position: absolute;
-    /* 두 컨테이너가 겹치도록 유지 */
-}
-
-/* 활성화된 컨테이너는 보이게 함 */
-.content-container.active {
-    opacity: 1;
-    pointer-events: auto;
-    position: relative;
-    /* 활성화될 때만 relative로 변경하여 컨테이너 높이를 인식하게 함 */
-}
-
-/* 1. 위치 수정: fixed로 변경 */
+/* 토글 위치 고정 */
 #toggle-container {
     position: fixed;
-    /* <<--- 수정됨 */
     bottom: 30px;
-    /* <<--- 추가/수정됨 */
     right: 30px;
-    /* <<--- 추가/수정됨 */
     z-index: 1000;
 }
 
-/* 2. 크기 수정: padding과 font-size 키움 */
 #mode-toggle {
     background: none;
     cursor: pointer;
     font-weight: bold;
     outline: none;
     padding: 15px 25px;
-    /* <<--- 수정됨 */
     font-size: 1.2em;
-    /* <<--- 수정됨 */
     transition: color 0.3s, border-color 0.3s;
-    font-family: var(--dot-font);
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
 }
 
 #mode-toggle .mode-text {
-    opacity: 0.5;
+    opacity: 0.8;
+    /* 토글 텍스트 opacity 조정 */
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
 }
 
 #mode-toggle .current-mode {
@@ -266,6 +247,8 @@ main {
     margin-top: 50px;
     padding: 30px;
     text-align: center;
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
 }
 
 .archiver-r-section .archiver-img {
@@ -274,6 +257,7 @@ main {
     border-radius: 50%;
     margin-top: 15px;
 }
+
 
 /* --- JOIN US 폼 스타일 --- */
 .workshop-section {
@@ -290,8 +274,9 @@ main {
 
 .workshop-section label {
     margin-top: 10px;
-    font-family: var(--dot-font);
-    font-size: 1.1em;
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
+    font-size: 1.2em;
 }
 
 .workshop-section input[type="text"],
@@ -300,7 +285,8 @@ main {
     padding: 8px;
     background: none;
     border: 1px solid;
-    font-family: var(--dot-font);
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
     font-size: 1em;
 }
 
@@ -310,7 +296,8 @@ main {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-family: var(--dot-font);
+    font-family: var(--main-font);
+    /* Amatic SC로 통일 */
     text-transform: uppercase;
     margin-top: 20px;
 }
