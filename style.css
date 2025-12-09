@@ -5,11 +5,11 @@
     --neon-pink: #FF10F0;
     --neon-blue: #00F0FF;
     --neon-purple: #8B00FF;
-    --main-bg: #000;
+    --main-bg: #202123;
     --main-font: 'Amatic SC', cursive;
     --title-font: 'Rock 3D', cursive;
 
-    /* 로고 색상 변수 추가 및 수정 */
+    /* 로고 색상 변수 */
     --logo-main-color: #fff;
     /* ERRRO 모드 기본 로고 색상 (흰색) */
     --logo-archive-color: #000;
@@ -30,6 +30,7 @@ body {
     scroll-behavior: smooth;
     font-family: var(--main-font);
     overflow-x: hidden;
+    /* transition: background-color 0.5s, color 0.5s; (body에 직접 적용) */
 }
 
 /* ======================================= */
@@ -38,11 +39,13 @@ body {
 .errro-mode {
     background-color: var(--main-bg);
     color: var(--neon-blue);
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .errro-mode a {
     color: var(--neon-blue);
     text-shadow: 0 0 3px var(--neon-blue);
+    text-decoration: none;
 }
 
 .errro-mode a:hover {
@@ -50,61 +53,52 @@ body {
     text-shadow: 0 0 5px var(--link-hover-color);
 }
 
-.errro-mode h1,
+/* 로고 스타일 (ERRRO 모드) */
+.errro-mode #logo-image {
+    /* 이미지가 src로 전환되므로, 텍스트 스타일은 제거 */
+    filter: brightness(1) drop-shadow(0 0 3px var(--neon-blue));
+    transition: filter 0.3s;
+}
+
+/* ERRRO 모드 부제목 (글로우 제거) */
 .errro-mode h2,
 .errro-mode h3 {
     color: var(--neon-pink);
+    text-shadow: none;
+    /* 글로우 효과 제거 */
 }
-
-/* 로고 스타일 (ERRRO 모드) */
-.errro-mode #logo a {
-    color: var(--logo-main-color);
-    /* 흰색 */
-    text-shadow: 0 0 3px var(--neon-blue);
-}
-
-.errro-mode .point-r {
-    color: var(--neon-pink);
-    /* 포인트 R 색상 */
-}
-
 
 /* ======================================= */
 /* --- 2. ARRRCHIVE 모드 (아날로그 기록) 스타일 --- */
 /* ======================================= */
 .arrrchive-mode {
     background-color: #F0F0F0;
-    /* 밝은 회색 아날로그 배경 */
     color: #333;
-    /* 어두운 글자색 */
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .arrrchive-mode a {
     color: #333;
     text-shadow: none;
+    text-decoration: none;
 }
 
 .arrrchive-mode a:hover {
     color: var(--neon-purple);
-    /* 보라색 호버 */
-}
-
-.arrrchive-mode h1,
-.arrrchive-mode h2,
-.arrrchive-mode h3 {
-    color: #111;
 }
 
 /* 로고 스타일 (ARRRCHIVE 모드) */
-.arrrchive-mode #logo a {
-    color: var(--logo-archive-color);
-    /* 검정색 */
-    text-shadow: none;
+.arrrchive-mode #logo-image {
+    filter: grayscale(1) brightness(0.5);
+    /* 흑백 또는 어두운 톤 */
+    transition: filter 0.3s;
 }
 
-.arrrchive-mode .point-r {
-    color: var(--neon-purple);
-    /* 포인트 R 색상 */
+/* ARRRCHIVE 모드 부제목 */
+.arrrchive-mode h2,
+.arrrchive-mode h3 {
+    color: #111;
+    text-shadow: none;
 }
 
 
@@ -161,21 +155,18 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    /* 배경은 바디 모드에 따라 투명하게 설정하거나, 필요시 색상 지정 */
 }
 
-/* 로고 크기 조정 */
-#logo {
-    font-family: var(--title-font);
-    font-size: 2.2em;
-    /* 로고 크기 키움 */
+/* 로고 컨테이너 */
+#logo-container {
     margin-left: 20px;
     cursor: pointer;
 }
 
-#logo a {
-    text-decoration: none;
-    transition: color 0.3s, text-shadow 0.3s;
+#logo-image {
+    width: 200px;
+    /* 로고 이미지 크기 키움 */
+    height: auto;
 }
 
 /* 내비게이션 위치 및 글자 크기 조정 */
@@ -184,25 +175,19 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    /* 오른쪽 쏠림 완화 */
-    margin-right: 150px;
+    margin-right: 180px;
     /* 오른쪽 여백을 크게 줘서 링크 그룹을 왼쪽으로 밀어냄 */
 }
 
 nav ul li a {
-    text-decoration: none;
     margin-left: 45px;
-    /* 링크 간 간격 늘림 */
+    /* 링크 간 간격 */
     font-family: var(--main-font);
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: none;
+    /* 호버 시 CSS 색상 전환 효과 제거 */
     font-size: 1.5em;
     /* 글자 크기 키움 */
-}
-
-.nav-link.active-nav {
-    font-weight: bold;
-    /* 활성화된 링크 스타일은 모드에 따라 다르게 지정할 수 있음 */
 }
 
 
@@ -211,11 +196,8 @@ nav ul li a {
 /* ======================================= */
 main#content-area {
     padding-top: 80px;
-    /* 헤더 높이만큼 여백 */
     position: relative;
-    /* 자식 absolute 페이지의 기준점 */
     min-height: calc(100vh - 80px);
-    /* 최소 높이 설정 */
 }
 
 .page {
@@ -229,26 +211,18 @@ main#content-area {
     opacity: 0;
     z-index: 1;
     pointer-events: none;
-    /* 클릭 이벤트 방지 */
 }
 
 .page.active {
     opacity: 1;
     z-index: 2;
     pointer-events: auto;
-    /* 클릭 이벤트 허용 */
 }
-
-/* JS에서 position: absolute/relative로 제어됨 */
 
 
 /* ======================================= */
-/* --- 6. 새로운 HOME 페이지 스타일 --- */
+/* --- 6. HOME 페이지 스타일 --- */
 /* ======================================= */
-#home {
-    /* 배경 이미지 등 필요 시 추가 */
-}
-
 #home .intro-main {
     max-width: 800px;
     margin: 0 auto;
@@ -260,14 +234,14 @@ main#content-area {
     margin-bottom: 40px;
 }
 
-#home .main-text {
-    font-size: 1.5em;
-    margin: 20px 0;
-}
-
 .home-video {
     margin: 30px auto;
     max-width: 350px;
+}
+
+.main-text {
+    font-size: 1.5em;
+    margin: 20px 0;
 }
 
 .creator-info {
@@ -279,14 +253,13 @@ main#content-area {
 /* ======================================= */
 /* --- 7. INTRO (기존 ABOUT) 페이지 스타일 --- */
 /* ======================================= */
-#intro .story-section {
+#about .story-section {
     max-width: 700px;
     margin: 50px auto 0;
     padding: 20px;
 }
 
-/* 기존 intro-logo는 home으로 이동했지만, 혹시 몰라 유지 */
-#intro .intro-logo {
+#about .intro-logo {
     font-size: 4em;
     margin-bottom: 30px;
 }
@@ -359,6 +332,14 @@ main#content-area {
 }
 
 /* 갤러리 모드 토글 버튼 */
+#toggle-container {
+    position: fixed;
+    /* 플로팅 버튼 */
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
 #mode-toggle {
     background: none;
     border: 2px solid;
@@ -366,29 +347,17 @@ main#content-area {
     font-size: 1.2em;
     cursor: pointer;
     transition: color 0.3s, border-color 0.3s;
-    margin-bottom: 30px;
 }
 
-/* ERRRO 모드 토글 버튼 스타일 */
+/* 토글 버튼 모드별 스타일 */
 .errro-mode #mode-toggle {
     color: var(--neon-blue);
     border-color: var(--neon-blue);
 }
 
-.errro-mode #mode-toggle:hover {
-    color: var(--neon-pink);
-    border-color: var(--neon-pink);
-}
-
-/* ARRRCHIVE 모드 토글 버튼 스타일 */
 .arrrchive-mode #mode-toggle {
     color: #333;
     border-color: #333;
-}
-
-.arrrchive-mode #mode-toggle:hover {
-    color: #111;
-    border-color: #111;
 }
 
 .mode-text {
@@ -431,22 +400,10 @@ main#content-area {
     height: 350px;
 }
 
-.video-link {
-    display: block;
-    margin-top: 20px;
-    font-size: 1.5em;
-}
-
 /* 아카이버 R 섹션 */
 .archiver-r-section {
     max-width: 500px;
     margin: 50px auto;
-}
-
-.archiver-img {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
 }
 
 
@@ -465,8 +422,7 @@ main#content-area {
     margin-top: 15px;
 }
 
-.workshop-section input[type="text"],
-.workshop-section input[type="email"],
+.workshop-section input,
 .workshop-section textarea {
     width: 100%;
     padding: 10px;
@@ -475,18 +431,6 @@ main#content-area {
     border: 2px solid;
     font-size: 1.2em;
     transition: border-color 0.3s;
-}
-
-.errro-mode input,
-.errro-mode textarea {
-    border-color: var(--neon-blue);
-    color: var(--neon-blue);
-}
-
-.arrrchive-mode input,
-.arrrchive-mode textarea {
-    border-color: #333;
-    color: #333;
 }
 
 .submit-button {
@@ -521,7 +465,7 @@ main#content-area {
 
 
 /* ======================================= */
-/* --- 11. 글리치 효과 및 팝업 (수정됨) --- */
+/* --- 11. 글리치 효과 및 팝업 --- */
 /* ======================================= */
 
 /* 글리치 애니메이션 정의 */
@@ -557,10 +501,6 @@ main#content-area {
     animation: glitch-anim 0.2s infinite alternate;
 }
 
-/* 부제목 글리치 적용을 위해 글로우 제거 (h2, h3) */
-/* 이미 .errro-mode h2, .errro-mode h3에서 글로우가 제거됨 */
-
-
 /* 레트로 팝업 스타일 (이미지 버전) */
 #retro-popup {
     position: fixed;
@@ -570,17 +510,14 @@ main#content-area {
     width: auto;
     z-index: 9999;
     cursor: pointer;
-    /* 클릭해서 닫을 수 있도록 */
     transition: opacity 0.3s, transform 0.3s;
 }
 
 .popup-image {
     width: 350px;
-    /* 이미지 크기 제어 */
     height: auto;
     display: block;
     box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.7);
-    /* 그림자 효과 추가 */
 }
 
 .popup-inactive {

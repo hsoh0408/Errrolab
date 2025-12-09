@@ -9,8 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const errroContent = document.getElementById('errro-content');
     const arrrchiveContent = document.getElementById('arrrchive-content');
 
-    // 글리치 및 팝업 관련 요소
-    const glitchElements = document.querySelectorAll('#logo, .glitch-text'); // 글리치 적용 요소: 로고와 부제목
+    // 로고 및 글리치 관련 요소
+    const dynamicLogo = document.getElementById('dynamic-logo'); // 동적 이미지 로고
+    const glitchElements = document.querySelectorAll('.glitch-text'); // 부제목 글리치 적용 요소
+
+    // 팝업 관련 요소
     const popup = document.getElementById('retro-popup');
 
     // --- 1. 페이지 전환 로직 (SPA 스타일) ---
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setActivePage(initialPage);
 
 
-    // --- 2. 갤러리 모드 토글 로직 ---
+    // --- 2. 갤러리 모드 토글 및 로고 이미지 전환 로직 ---
     function updateToggleText(isErrroMode) {
         if (!toggleButton) return;
         const errroText = toggleButton.querySelector('.mode-text:first-child');
@@ -70,6 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 로고 이미지 경로 전환 함수
+    function updateLogoImage(isErrroMode) {
+        if (dynamicLogo) {
+            if (isErrroMode) {
+                // ERRRO 모드일 때 ERRRO 로고 이미지 사용
+                dynamicLogo.src = 'errrolab_logo_errro.png';
+            } else {
+                // ARRRCHIVE 모드일 때 ARRRCHIVE 로고 이미지 사용
+                dynamicLogo.src = 'errrolab_logo_archive.png';
+            }
+        }
+    }
+
+    // 초기 로고 설정 (ERRRO 모드가 기본)
+    updateLogoImage(true);
+
     // 토글 버튼 클릭 이벤트 설정
     const isErrro = body.classList.contains('errro-mode');
     if (toggleButton) {
@@ -79,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const isErrroMode = body.classList.toggle('errro-mode');
             body.classList.toggle('arrrchive-mode', !isErrroMode);
 
+            // 로고 이미지 전환
+            updateLogoImage(isErrroMode);
+
+            // 갤러리 콘텐츠 전환
             if (errroContent && arrrchiveContent) {
                 if (isErrroMode) {
                     errroContent.classList.add('active');
@@ -96,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // --- 3. 글리치 및 팝업 효과 로직 ---
 
     // 팝업 숨김 함수 (팝업 전체 클릭 시 실행)
@@ -110,27 +132,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 간헐적 글리치 효과 적용 함수
+    // 간헐적 글리치 효과 적용 함수 (로고와 부제목에 적용)
     function initiateGlitch() {
-        if (glitchElements.length === 0) return;
+        if (glitchElements.length === 0 && !dynamicLogo) return;
 
         // 5% 확률로 글리치 실행
-        if (Math.random() < 0.05) {
-            // 모든 글리치 요소에 적용
+        if (Math.random() < 0.4) {
+            // 모든 글리치 요소에 적용 (부제목)
             glitchElements.forEach(el => {
                 el.classList.add('glitch-active');
             });
+
+            // 로고 이미지에 글리치 적용 (별도 처리)
+            if (dynamicLogo) {
+                dynamicLogo.classList.add('glitch-active');
+            }
 
             // 0.5초 후 글리치 종료
             setTimeout(() => {
                 glitchElements.forEach(el => {
                     el.classList.remove('glitch-active');
                 });
+                if (dynamicLogo) {
+                    dynamicLogo.classList.remove('glitch-active');
+                }
             }, 500);
         }
     }
 
-    // 팝업 표시 함수
+    // 팝업 표시 함수 (랜덤 위치)
     function showPopup() {
         if (popup && popup.classList.contains('popup-inactive')) {
             popup.style.display = 'block';
@@ -143,12 +173,23 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.classList.remove('popup-inactive');
             popup.style.opacity = '1';
 
-            // 팝업 전체를 클릭했을 때 닫히도록 이벤트 리스너 추가 (팝업이 띄워질 때마다 추가)
+            // 팝업 전체를 클릭했을 때 닫히도록 이벤트 리스너 추가 
             popup.addEventListener('click', hidePopup, { once: true });
 
             // 10초 후 팝업 자동 숨김
             setTimeout(hidePopup, 10000);
         }
+    }
+
+    // --- 4. 로고 호버 글리치 및 타이머 설정 ---
+    const logoLink = document.getElementById('home-link');
+    if (logoLink) {
+        logoLink.addEventListener('mouseenter', () => {
+            if (dynamicLogo) dynamicLogo.classList.add('glitch-active');
+        });
+        logoLink.addEventListener('mouseleave', () => {
+            if (dynamicLogo) dynamicLogo.classList.remove('glitch-active');
+        });
     }
 
     // 타이머 설정
