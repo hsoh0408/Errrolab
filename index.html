@@ -32,10 +32,14 @@
             <div class="page-content center-content">
                 <div class="intro-main">
                     <h1 class="title-font intro-logo">ERROLAB</h1>
-                    <p class="slogan dot-font intro-slogan">"FIND BEAUTY IN THE ERRORS."</p>
-                    <a href="https://www.instagram.com/reel/DR-bJgnE3e1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                        target="_blank" class="video-link dot-font intro-video-link">VIEW TEASER
-                        VIDEO</a>
+                    <p class="slogan main-font intro-slogan">"FIND BEAUTY IN THE ERRORS."</p>
+
+                    <div class="video-embed-container">
+                        <iframe width="350" height="622"
+                            src="https://www.instagram.com/reel/DR-bJgnE3e1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+
                 </div>
 
                 <div class="story-section hidden-on-top">
@@ -54,11 +58,11 @@
                 <div class="card-container">
                     <div class="facility-card" data-hover-text="CREATE">
                         <img src="facility_create.jpeg" alt="Create Area">
-                        <div class="overlay"><span class="dot-font">CREATE</span></div>
+                        <div class="overlay"><span class="main-font">CREATE</span></div>
                     </div>
                     <div class="facility-card" data-hover-text="EXHIBIT">
                         <img src="facility_exhibit.png" alt="Exhibit Hall">
-                        <div class="overlay"><span class="dot-font">EXHIBIT</span></div>
+                        <div class="overlay"><span class="main-font">EXHIBIT</span></div>
                     </div>
                 </div>
             </div>
@@ -70,8 +74,8 @@
 
                 <div id="toggle-container">
                     <button id="mode-toggle" aria-label="Toggle Mode">
-                        <span class="mode-text current-mode dot-font">ERRRO</span> / <span
-                            class="mode-text dot-font">ARRRCHIVE</span>
+                        <span class="mode-text current-mode main-font">ERRRO</span> / <span
+                            class="mode-text main-font">ARRRCHIVE</span>
                     </button>
                 </div>
 
@@ -84,9 +88,9 @@
                             <img src="errro_img_c.png" alt="Errro Image C" class="grid-item wide">
                             <img src="errro_img_d.png" alt="Errro Image D" class="grid-item">
                         </div>
-                        <a href="[당신의 인스타그램 릴스 링크]" target="_blank" class="video-link dot-font">VIEW TEASER VIDEO</a>
+                        <a href="[당신의 인스타그램 릴스 링크]" target="_blank" class="video-link main-font">VIEW TEASER VIDEO</a>
                     </div>
-                    <p class="social-link dot-font">FOLLOW US: <a
+                    <p class="social-link main-font">FOLLOW US: <a
                             href="https://www.instagram.com/reel/DR-bJgnE3e1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">@ERROLAB</a>
                     </p>
                 </div>
@@ -101,7 +105,7 @@
                             <img src="arrrchive_img_d.png" alt="Archive Image D" class="grid-item">
                         </div>
                     </div>
-                    <div class="archiver-r-section dot-font">
+                    <div class="archiver-r-section main-font">
                         <h3 class="title-font">MEET ARRRCHIVER "R"</h3>
                         <p>The sentient archive that curates the analogue records of Errolab. This is the keeper of all
                             forgotten memories.</p>
@@ -119,13 +123,13 @@
                     <h2>WORRRKSHOP APPLICATION</h2>
                     <form>
                         <label for="name">NAME:</label>
-                        <input type="text" id="name" name="name" class="dot-font" required>
+                        <input type="text" id="name" name="name" class="main-font" required>
 
                         <label for="email">EMAIL:</label>
-                        <input type="email" id="email" name="email" class="dot-font" required>
+                        <input type="email" id="email" name="email" class="main-font" required>
 
                         <label for="message">MESSAGE / INTENTION:</label>
-                        <textarea id="message" name="message" class="dot-font" rows="5" required></textarea>
+                        <textarea id="message" name="message" class="main-font" rows="5" required></textarea>
 
                         <button type="submit" class="submit-button">SUBMIT APPLICATION</button>
                     </form>
@@ -134,6 +138,27 @@
         </section>
 
     </main>
+
+    <div id="retro-popup" class="popup-inactive">
+        <div class="popup-header">
+            <span class="popup-title">Alert / Errro</span>
+            <div class="popup-controls">
+                <span>?</span>
+                <span>_</span>
+                <span>X</span>
+            </div>
+        </div>
+        <div class="popup-body">
+            <img src="windows_error_icon.png" alt="Error Icon" class="error-icon">
+            <div class="popup-message">
+                <p>The system is detecting unauthorized access attempts.</p>
+                <p>DO NOT CLOSE THIS WINDOW. AWAITING INPUT...</p>
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button class="ok-button">OK</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -428,3 +428,126 @@ main {
     color: #333;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+
+
+/* 글리치 효과*/
+/* --- 글리치 애니메이션 정의 --- */
+@keyframes glitch-anim {
+    0% {
+        text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-blue);
+        transform: translate(0);
+    }
+
+    25% {
+        text-shadow: -2px 1px 0 var(--neon-blue), 1px -1px 0 var(--neon-purple);
+        transform: translate(1px, 1px);
+    }
+
+    50% {
+        text-shadow: 2px -1px 0 var(--neon-pink), -1px 2px 0 var(--neon-blue);
+        transform: translate(-1px, 0);
+    }
+
+    75% {
+        text-shadow: -1px -1px 0 var(--neon-purple), 1px 2px 0 var(--neon-pink);
+        transform: translate(0, -1px);
+    }
+
+    100% {
+        text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-blue);
+        transform: translate(0);
+    }
+}
+
+/* 글리치 적용 클래스 */
+.glitch-active {
+    animation: glitch-anim 0.2s infinite alternate;
+}
+
+
+/*팝업*/
+/* --- 레트로 팝업 스타일 --- */
+#retro-popup {
+    position: fixed;
+    top: 15%;
+    /* 화면 상단에서 15% 위치 */
+    left: 50%;
+    /* 화면 중앙 */
+    transform: translateX(-50%);
+    /* 정확히 중앙 정렬 */
+    width: 350px;
+    z-index: 9999;
+    /* 모든 요소 위에 보이도록 */
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+    /* 윈도우 스타일 그림자 */
+    background-color: #C0C0C0;
+    /* 윈도우 회색 배경 */
+    font-family: var(--dot-font);
+    /* 윈도우/도트 폰트 느낌 유지 */
+
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.popup-inactive {
+    display: none;
+    /* JS가 아닌 CSS로 완전히 숨김 */
+    opacity: 0;
+}
+
+.popup-header {
+    background-color: #0A246A;
+    /* 윈도우 타이틀 바 색상 */
+    color: white;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.popup-controls span {
+    border: 1px solid white;
+    padding: 0 5px;
+    margin-left: 5px;
+    background-color: #C0C0C0;
+    color: #000;
+    cursor: pointer;
+}
+
+.popup-body {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+.error-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 15px;
+}
+
+.popup-message p {
+    margin: 5px 0;
+    font-family: var(--main-font);
+    /* 본문은 Amatic SC로 유지 */
+    color: #000;
+    font-size: 1.1em;
+}
+
+.popup-footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 2px solid #fff;
+}
+
+.ok-button {
+    padding: 5px 20px;
+    background-color: #C0C0C0;
+    border: 2px outset #fff;
+    box-shadow: 2px 2px 0 #000;
+    cursor: pointer;
+    font-family: var(--main-font);
+    font-size: 1.1em;
+}
